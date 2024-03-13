@@ -1,3 +1,5 @@
+
+//Модуль пароля
 pub mod password{
     use std::io;
     use rand::Rng;
@@ -37,3 +39,30 @@ pub mod password{
         password
     }
 }
+
+
+
+//Модуль базы данных
+pub mod sql {
+    extern crate rusqlite;
+
+    use std::{fmt::Result, io};
+    use rusqlite::{Connection, Result};
+
+    pub fn connect() -> Result<()> {
+        let con = Connection::open("Passwords.db");
+
+        println!("db is opened!");
+        Ok(())
+    }
+
+    pub fn save(connect: &Result<()>) {
+        
+        if connect == Ok(()) {
+            println!("ghsd");
+        } else if connect == Err(()) {
+
+        }
+    }
+}
+

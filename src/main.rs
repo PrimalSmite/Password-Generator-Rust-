@@ -1,6 +1,6 @@
 mod funcs;
 pub use std::io;
-pub use crate::funcs::password;
+pub use crate::funcs::{password, sql};
 
 mod menu{
     use std::io;
@@ -44,7 +44,7 @@ fn main(){
             if save == 1{
                 
             } else if save == 2 {
-                
+                sql::save(&sql::connect()); 
             } else {
 
             }
