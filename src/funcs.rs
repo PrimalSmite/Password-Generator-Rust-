@@ -1,29 +1,26 @@
-
 //Модуль пароля
 pub mod password{
-    use std::io;
+    use crate::input::input::input_int;
     use rand::Rng;
 
     pub const SYMBOLS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
                             abcdefghijklmnopqrstuvwxyz\
-                            0123456789)(*&^%$#@!~";
-/*
-    pub fn transform(string: &str) -> u8 {
-        let number:u8 = string.trim().parse().expect("Не удалось распознать число. Пожалуйста, убедитесь, что вы ввели число от 0 до 255");
+                            0123456789)(*&^%$#!";
 
-        number
-    } 
-*/
-    pub fn ask_len() -> u8 {
+
+    fn ask_len() -> u8 {
         println!("Введите количество символов в пароле:");
-        let mut _count = String::new();
+        let mut count = String::new();
+        /*
         io::stdin().read_line(&mut _count).expect("error");
         let len_int: u8 = transform(&_count);
+        */
+        let len: u8 = input_int(&mut count);
 
-        len_int
+        len
     }
 
-    pub fn generate(symbols: &[u8]) -> String{
+    pub fn generate() -> String{
         let mut rng = rand::thread_rng();
        
         let lenght: u8 = ask_len(); 

@@ -9,15 +9,15 @@ pub mod input{
     } 
     
     //Функция вводит данные с клавиатуры и записывает в переменню типа String
-    fn stdinput(string: String) -> &String{
+    fn stdinput(mut string: &mut String) -> &mut String{
         //Ввод значения с клавитуры в переменную String
         io::stdin().read_line(&mut string).expect("Не удалось ввести значение");
 
-        &string
+        string
     }
 
     //Функция вводит данные с клавиатуры и записывает их в тип u8
-    pub fn input_int(string: &String) -> u8{
+    pub fn input_int(mut string: &mut String) -> u8{
         string = stdinput(string);
         let number: u8 = transform(string);
         
