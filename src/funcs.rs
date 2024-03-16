@@ -7,13 +7,13 @@ pub mod password{
     pub const SYMBOLS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
                             abcdefghijklmnopqrstuvwxyz\
                             0123456789)(*&^%$#@!~";
-
+/*
     pub fn transform(string: &str) -> u8 {
         let number:u8 = string.trim().parse().expect("Не удалось распознать число. Пожалуйста, убедитесь, что вы ввели число от 0 до 255");
 
         number
     } 
-
+*/
     pub fn ask_len() -> u8 {
         println!("Введите количество символов в пароле:");
         let mut _count = String::new();
@@ -42,7 +42,7 @@ pub mod password{
 
 
 
-//Модуль базы данных
+/*Модуль базы данных
 pub mod sql {
     extern crate rusqlite;
 
@@ -65,4 +65,4 @@ pub mod sql {
         }
     }
 }
-
+*/

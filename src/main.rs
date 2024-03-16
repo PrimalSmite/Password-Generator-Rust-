@@ -1,6 +1,8 @@
-mod funcs;
+pub use crate::funcs::{password};
+pub use crate::input::*;
+mod funcs; 
+mod input; 
 pub use std::io;
-pub use crate::funcs::{password, sql};
 
 mod menu{
     use std::io;
