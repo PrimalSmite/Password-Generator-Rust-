@@ -1,21 +1,22 @@
 mod funcs;
 mod input;
+mod sql;
 
+use crate::sql;
 use crate::funcs::password;
-use crate::input::input::input_int;
+use crate::input::input::int_input;
  
 pub use std::io;
 
 mod menu{
-    //use std::io;
-    use crate::input::input::input_int;
+    use crate::input::input::int_input;
 
     pub fn menu() -> u8{
         println!("Выберите действие:\n(1) Создать пароль\n(2) Сохранить пароль\n(0) Выход");
 
         //Ввод числа
         let mut menu_act = String::new();
-        let action: u8 = input_int(&mut menu_act);
+        let action: u8 = int_input(&mut menu_act);
 
         action
     }
@@ -35,7 +36,7 @@ fn main(){
 
            //Ввод числа
            let mut save_string = String::new();
-           let save:u8 = input_int(&mut save_string);
+           let save:u8 = int_input(&mut save_string);
            
            //Сохранение пароля
             if save == 1{
