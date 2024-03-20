@@ -1,6 +1,6 @@
 //Модуль пароля
 pub mod password{
-    use crate::input::input::input_int;
+    use crate::input::input::int_input;
     use rand::Rng;
 
     pub const SYMBOLS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
@@ -15,7 +15,7 @@ pub mod password{
         io::stdin().read_line(&mut _count).expect("error");
         let len_int: u8 = transform(&_count);
         */
-        let len: u8 = input_int(&mut count);
+        let len: u8 = int_input(&mut count);
 
         len
     }
@@ -36,30 +36,3 @@ pub mod password{
         password
     }
 }
-
-
-
-/*Модуль базы данных
-pub mod sql {
-    extern crate rusqlite;
-
-    use std::{fmt::Result, io};
-    use rusqlite::{Connection, Result};
-
-    pub fn connect() -> Result<()> {
-        let con = Connection::open("Passwords.db");
-
-        println!("db is opened!");
-        Ok(())
-    }
-
-    pub fn save(connect: &Result<()>) {
-        
-        if connect == Ok(()) {
-            println!("ghsd");
-        } else if connect == Err(()) {
-
-        }
-    }
-}
-*/

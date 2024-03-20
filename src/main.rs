@@ -2,9 +2,9 @@ mod funcs;
 mod input;
 mod sql;
 
-use crate::sql;
+use crate::sql::db;
 use crate::funcs::password;
-use crate::input::input::int_input;
+use crate::input::input::{int_input, stdinput};
  
 pub use std::io;
 
@@ -42,12 +42,24 @@ fn main(){
             if save == 1{
                 
             } else if save == 2 {
-                //sql::save(&sql::connect()); 
+                 
             } else {
 
             }
            
-           break; 
+           //break; 
+       } else if act == 2 {
+            println!("Введите название сервиса, логин и пароль:");
+            
+            //Ввод данных
+            let mut name = String::new();
+            let mut login = String::new();
+            let mut password = String::new(); 
+            name = stdinput(&mut name); 
+            login = stdinput(&mut login);
+            password = stdinput(&mut password);
+
+            //db::save(&name, &login, &password);
        }
     }
 }
