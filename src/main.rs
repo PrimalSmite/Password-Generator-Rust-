@@ -1,8 +1,6 @@
 mod funcs;
 mod input;
-mod sql;
 
-use crate::sql;
 use crate::funcs::password;
 use crate::input::input::int_input;
  
