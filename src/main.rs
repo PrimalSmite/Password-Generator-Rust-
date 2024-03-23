@@ -34,7 +34,7 @@ fn main(){
            password::generate();
            println!("Хотите сохранить пароль?\n(1) Да\n(2) Нет");
 
-           //Ввод числа
+           /*Ввод числа
            let mut save_string = String::new();
            let save:u8 = int_input(&mut save_string);
            
@@ -46,7 +46,7 @@ fn main(){
             } else {
 
             }
-           
+          */ 
            //break; 
        } else if act == 2 {
             println!("Введите название сервиса, логин и пароль:");
@@ -58,8 +58,13 @@ fn main(){
             name = stdinput(&mut name); 
             login = stdinput(&mut login);
             password = stdinput(&mut password);
-
-            //db::save(&name, &login, &password);
+            
+            let result = db::save(&name, &login, &password);
+            if result == Ok(()){
+                println!("bababuba");
+            }else{
+                println!("ne bababuba");
+            }
        }
     }
 }
