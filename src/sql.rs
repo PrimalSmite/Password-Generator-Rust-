@@ -3,8 +3,13 @@ pub mod db{
 
     use rusqlite::{Connection, Result};
 
+    fn connect() -> Result<Connection, Error>{
+        let conn = Connection::open("Passwords.db");
+        conn
+    }
+
     //Сохранение
-    pub fn save(mut _name: &String, mut _login: &String, mut _password: &String) -> Result<()>{
+    pub fn save(mut _name: &str, mut _login: &str, mut _password: &str, conn: &Connection) -> Result<()>{
        
         //Путь до базы данных
         //let path = "Passwords.db";
@@ -17,28 +22,32 @@ pub mod db{
                 name        TEXT NOT NULL,
                 login       TEXT NOT NULL,
                 password    TEXT NOT NULL
-            )", ()){
-            Ok(crated) =>{
-                println!("{} tables created ", crated);
-
-            },
+            )", ()
+            ){
             Err(err) => {
                 println!("{} create failed", err);
-            }
-        }
-        
-        //Ввод значений в таблицу
-        match db.execute("INSERT INTO passwords (id, login, password) VALUES (?1, ?2, ?3)",(_name, _login, _password)){
-            Ok(inserted) => {
-                println!("{} bububaba", inserted);
-                Ok(())
-            },
-            Err(err) => {
-                println!("{} ne bububaba", err);
                 Err(err)
+            },
+            Ok(created) => {
+                println!("{} table created", created);
+                
+                match db.execute("INSERT INTO passwords (name, login, password) VALUES (:name, :login, :password)", &[(":name", _name,
+                                                                                                                       ":login", _login,
+                                                                                                                       ":password", _password)]){
+                    Err(err) => {
+                        println!("{} insert failed", err);
+                        Err(err)
+                    }
+                    Ok(inserted) => {
+                        println!("{} inserted", inserted);
+
+
+                        Ok(())
+                    }
+                }
             }
-        }
-        
-        //Ok(())
+            
+        } 
+
     }
 }
